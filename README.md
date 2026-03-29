@@ -53,7 +53,7 @@ When the source is the student itself ($\pi=p_{\mathrm{ref}}$), $\pi^+=p_{\mathr
 
 $$\max_{r\in\Delta(\mathcal{Y})}\;\mathbb{E}_{y\sim r}[\varphi(x,y)] \qquad\text{subject to}\qquad \chi^2(r \\,\Vert \\, \pi(\cdot\mid x)) \le \frac{1-\alpha_{\pi}(x)}{\alpha_{\pi}(x)}.$$
 
-*That is, filtering is the smallest $\chi^2$-ball step from the source that achieves perfect safety reward.*
+That is, filtering is the smallest $\chi^2$-ball step from the source that achieves perfect safety reward.*
 
 For any source $\pi$, the safety-filtered distribution $\pi^+$ is the most conservative modification of $\pi$ that places all mass on safe outputs. This holds regardless of whether the source is the student, a teacher, or a steered model.
 
@@ -74,7 +74,7 @@ $$\pi_I^+(\cdot\mid x_h)=p_{\mathrm{ref}}^+(\cdot\mid x_h), \qquad \alpha_I(x_h)
 
 with strict inequality when $\alpha_{\mathrm{ref}}(x_h)<1$. Hence the accepted target is unchanged while the acceptance rate increases (strictly so whenever $0<\alpha_{\mathrm{ref}}(x_h)<1$). Collecting $m$ accepted traces requires $\alpha_I(x_h)/\alpha_{\mathrm{ref}}(x_h)\ge 1$ times fewer expected generations with steering; for small $\alpha_{\mathrm{ref}}(x_h)$ this speedup approaches $\omega(x_h)$.
 
-Since $\pi_I^+=p_{\mathrm{ref}}^+$ exactly, refusal steering achieves the same KL minimum as benign self-generation ($\pi=p_{\mathrm{ref}}$): $D_{\mathrm{KL}}(\pi_I^+\|p_{\mathrm{ref}})=-\log\alpha_{\mathrm{ref}}(x_h)$. Moreover, prompts with lower acceptance rates receive a *larger* multiplicative boost: for any $0<a\le b\le 1$ and common $\omega>1$, $f_\omega(a)/f_\omega(b) > a/b$ where $f_\omega(a):=\omega a/\bigl(1+(\omega-1)a\bigr)$. Thus steering can reduce the *multiplicative* acceptance-rate imbalance across harmful prompts, especially when $\omega$ is large enough to raise all rates above a common threshold.
+Since $\pi_I^+=p_{\mathrm{ref}}^+$ exactly, refusal steering achieves the same KL minimum as benign self-generation ($\pi=p_{\mathrm{ref}}$): $D_{\mathrm{KL}}(\pi_I^+\\,\Vert \\,p_{\mathrm{ref}})=-\log\alpha_{\mathrm{ref}}(x_h)$. Moreover, prompts with lower acceptance rates receive a *larger* multiplicative boost: for any $0<a\le b\le 1$ and common $\omega>1$, $f_\omega(a)/f_\omega(b) > a/b$ where $f_\omega(a):=\omega a/\bigl(1+(\omega-1)a\bigr)$. Thus steering can reduce the *multiplicative* acceptance-rate imbalance across harmful prompts, especially when $\omega$ is large enough to raise all rates above a common threshold.
 
 **References**
 
