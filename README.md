@@ -23,9 +23,9 @@ $$\alpha_{\mathrm{ref}}(x) := \mathbb{P}_{y\sim p_{\mathrm{ref}}(\cdot\mid x)}[\
 whenever $\alpha_{\mathrm{ref}}(x)>0$.
 
 **Reasoning preservation.**
-The KL divergence $D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\,\|\,p_{\mathrm{ref}}(\cdot\mid x))$ is a proxy for distributional discrepancy between the training target and the frozen student: for any bounded score $s(y)\in[0,1]$, Pinsker's inequality gives
+The KL divergence $D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}(\cdot\mid x))$ is a proxy for distributional discrepancy between the training target and the frozen student: for any bounded score $s(y)\in[0,1]$, Pinsker's inequality gives
 
-$$\bigl|\mathbb{E}_{y\sim \pi^+}[s(y)] - \mathbb{E}_{y\sim p_{\mathrm{ref}}}[s(y)]\bigr| \le \sqrt{\tfrac{1}{2}\,D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\,\|\,p_{\mathrm{ref}}(\cdot\mid x))},$$
+$$\bigl|\mathbb{E}_{y\sim \pi^+}[s(y)] - \mathbb{E}_{y\sim p_{\mathrm{ref}}}[s(y)]\bigr| \le \sqrt{\tfrac{1}{2}\,D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}(\cdot\mid x))},$$
 
 so smaller KL means the safety-filtered source is less likely to shift the student's native reasoning.
 
@@ -35,13 +35,13 @@ so smaller KL means the safety-filtered source is less likely to shift the stude
 
 **Lemma 1** (Student-relative safe projection). Assume $\alpha_{\mathrm{ref}}(x)>0$. For any distribution $r(\cdot\mid x)$ supported on $\{y\in\mathcal{Y}:\varphi(x,y)=1\}$,
 
-$$D_{\mathrm{KL}}(r(\cdot\mid x)\,\|\,p_{\mathrm{ref}}(\cdot\mid x)) = -\log \alpha_{\mathrm{ref}}(x) + D_{\mathrm{KL}}(r(\cdot\mid x)\,\|\,p_{\mathrm{ref}}^+(\cdot\mid x)).$$
+$$D_{\mathrm{KL}}(r(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}(\cdot\mid x)) = -\log \alpha_{\mathrm{ref}}(x) + D_{\mathrm{KL}}(r(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}^+(\cdot\mid x)).$$
 
-Since the first term is independent of $r$ and $D_{\mathrm{KL}}(r(\cdot\mid x)\,\|\,p_{\mathrm{ref}}^+(\cdot\mid x))\ge 0$ with equality iff $r=p_{\mathrm{ref}}^+(\cdot\mid x)$, the unique safe distribution minimizing $D_{\mathrm{KL}}(r(\cdot\mid x)\,\|\,p_{\mathrm{ref}}(\cdot\mid x))$ is $r^*=p_{\mathrm{ref}}^+(\cdot\mid x)$.
+Since the first term is independent of $r$ and $D_{\mathrm{KL}}(r(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}^+(\cdot\mid x))\ge 0$ with equality iff $r=p_{\mathrm{ref}}^+(\cdot\mid x)$, the unique safe distribution minimizing $D_{\mathrm{KL}}(r(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}(\cdot\mid x))$ is $r^*=p_{\mathrm{ref}}^+(\cdot\mid x)$.
 
 Applying Lemma 1 to $r=\pi^+(\cdot\mid x)$ yields:
 
-$$D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\,\|\,p_{\mathrm{ref}}(\cdot\mid x)) = \underbrace{-\log \alpha_{\mathrm{ref}}(x)}_{\text{unavoidable safe-filtering cost}} + \underbrace{D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\,\|\,p_{\mathrm{ref}}^+(\cdot\mid x))}_{\text{extra discrepancy from using source } \pi \text{ instead of } p_{\mathrm{ref}}}.$$
+$$D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}(\cdot\mid x)) = \underbrace{-\log \alpha_{\mathrm{ref}}(x)}_{\text{unavoidable safe-filtering cost}} + \underbrace{D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\,\|\,p_{\mathrm{ref}}^+(\cdot\mid x))}_{\text{extra discrepancy from using source } \pi \text{ instead of } p_{\mathrm{ref}}}.$$
 
 When the source is the student itself ($\pi=p_{\mathrm{ref}}$), $\pi^+=p_{\mathrm{ref}}^+$ and the mismatch term vanishes: $D_{\mathrm{KL}}(\pi^+\|p_{\mathrm{ref}})=-\log\alpha_{\mathrm{ref}}$, the smallest KL attainable by *any* safe policy. A teacher source ($\pi=p_T$) incurs an additional cross-model gap $D_{\mathrm{KL}}(p_T^+\|p_{\mathrm{ref}}^+)\ge 0$.
 
@@ -51,7 +51,7 @@ When the source is the student itself ($\pi=p_{\mathrm{ref}}$), $\pi^+=p_{\mathr
 
 **Proposition 1** (Source-centered policy improvement; one-step specialization of Russo, 2026). Assume $\alpha_{\pi}(x)>0$. The accepted conditional $\pi^+(\cdot\mid x)$ is the unique optimizer of
 
-$$\max_{r\in\Delta(\mathcal{Y})}\;\mathbb{E}_{y\sim r}[\varphi(x,y)] \qquad\text{subject to}\qquad \chi^2(r\,\|\,\pi(\cdot\mid x)) \le \frac{1-\alpha_{\pi}(x)}{\alpha_{\pi}(x)}.$$
+$$\max_{r\in\Delta(\mathcal{Y})}\;\mathbb{E}_{y\sim r}[\varphi(x,y)] \qquad\text{subject to}\qquad \chi^2(r \\,\Vert \\, \pi(\cdot\mid x)) \le \frac{1-\alpha_{\pi}(x)}{\alpha_{\pi}(x)}.$$
 
 *That is, filtering is the smallest $\chi^2$-ball step from the source that achieves perfect safety reward.*
 
