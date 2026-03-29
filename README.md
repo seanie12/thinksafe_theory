@@ -63,7 +63,8 @@ For any source $\pi$, the safety-filtered distribution $\pi^+$ is the most conse
 
 **Assumption 1** (Refusal tilt). For a harmful prompt $x_h$, there exists $\omega(x_h)> 1$ such that the refusal instruction reweights safe outputs by $\omega(x_h)$ while leaving unsafe outputs unchanged:
 
-$$p_{\mathrm{ref}}(y\mid I_{\mathrm{refusal}},x_h) \;\propto\; \begin{cases} \omega(x_h)\cdot p_{\mathrm{ref}}(y\mid x_h) & \text{if } \varphi(x_h,y)=1, \\ p_{\mathrm{ref}}(y\mid x_h) & \text{if } \varphi(x_h,y)=0. \end{cases}$$
+$$\begin{equation*}p_{\mathrm{ref}}(y\mid I_{\mathrm{refusal}},x_h) \propto \begin{cases} \omega(x_h)\cdot p_{\mathrm{ref}}(y\mid x_h) & \text{if } \varphi(x_h,y)=1, \\\\ p_{\mathrm{ref}}(y\mid x_h) & \text{if } \varphi(x_h,y)=0. \end{cases}
+\end{equation*}$$
 
 *Relative probabilities within the safe set and within the unsafe set are preserved; only the odds between the two groups change.*
 
