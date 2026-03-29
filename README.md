@@ -41,7 +41,7 @@ Since the first term is independent of $r$ and $D_{\mathrm{KL}}(r(\cdot\mid x)\\
 
 Applying Lemma 1 to $r=\pi^+(\cdot\mid x)$ yields:
 
-$$D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}(\cdot\mid x)) = \underbrace{-\log \alpha_{\mathrm{ref}}(x)}_{\text{unavoidable safe-filtering cost}} + \underbrace{D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\,\|\,p_{\mathrm{ref}}^+(\cdot\mid x))}_{\text{extra discrepancy from using source } \pi \text{ instead of } p_{\mathrm{ref}}}.$$
+$$D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}(\cdot\mid x)) = \underbrace{-\log \alpha_{\mathrm{ref}}(x)}_{\text{unavoidable safe-filtering cost}} + \underbrace{D_{\mathrm{KL}}(\pi^+(\cdot\mid x)\\,\Vert \\,p_{\mathrm{ref}}^+(\cdot\mid x))}_{\text{extra discrepancy from using source } \pi \text{ instead of } p_{\mathrm{ref}}}.$$
 
 When the source is the student itself ($\pi=p_{\mathrm{ref}}$), $\pi^+=p_{\mathrm{ref}}^+$ and the mismatch term vanishes: $D_{\mathrm{KL}}(\pi^+\|p_{\mathrm{ref}})=-\log\alpha_{\mathrm{ref}}$, the smallest KL attainable by *any* safe policy. A teacher source ($\pi=p_T$) incurs an additional cross-model gap $D_{\mathrm{KL}}(p_T^+\|p_{\mathrm{ref}}^+)\ge 0$.
 
