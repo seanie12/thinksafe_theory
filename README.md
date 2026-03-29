@@ -49,7 +49,7 @@ When the source is the student itself ($\pi=p_{\mathrm{ref}}$), $\pi^+=p_{\mathr
 
 ### 2. Filtering is the least disruptive way to achieve safety.
 
-**Proposition 1** (Source-centered policy improvement; one-step specialization of Russo, 2026). *ssume $\alpha_{\pi}(x)>0$. The accepted conditional $\pi^+(\cdot\mid x)$ is the unique optimizer of
+**Proposition 1** (Source-centered policy improvement; one-step specialization of Russo, 2026). Assume $\alpha_{\pi}(x)>0$. The accepted conditional $\pi^+(\cdot\mid x)$ is the unique optimizer of
 
 $$\max_{r\in\Delta(\mathcal{Y})}\;\mathbb{E}_{y\sim r}[\varphi(x,y)] \qquad\text{subject to}\qquad \chi^2(r\,\|\,\pi(\cdot\mid x)) \le \frac{1-\alpha_{\pi}(x)}{\alpha_{\pi}(x)}.$$
 
